@@ -1,0 +1,18 @@
+.nav{
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 600px) {
+    .borc-card-container{
+        flex-direction: column;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .mobil-p-0{
+        padding: 0;
+    }
+  }
+.borc-miktar{
+    text-align: right;
+}
