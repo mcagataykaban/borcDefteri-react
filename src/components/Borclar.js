@@ -18,7 +18,7 @@ const Borclar = (props) => {
             {props.borclar.map((borc) => {
               return (
                 <BorcSatir
-                key={borc.id}
+                  key={borc.Id}
                   borclar={props.borclar}
                   setBorclar={props.setBorclar}
                   token={props.token}

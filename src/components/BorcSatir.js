@@ -3,24 +3,48 @@ import axios from 'axios'
 import qs from 'qs'
 import { trackPromise } from "react-promise-tracker";
 
+// type: "delete",
+//     url: apiUrl + "api/Borclar/Sil/" + borcId,
+//     headers: getAuthHeaders(),
+
+
+  // var apiUrl = "https://borc.cagataykaban.com/";
+  // trackPromise(
+  // axios({
+  //   method: "post",
+  //   url: apiUrl + "api/Borclar/Sil/" + props.id,
+  //   headers: {
+  //     "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+  //   },
+  // })
+  //   .then((response) => {
+  //       console.log('oldu silme ');
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   })
+  //   )
+    
+
 
 const BorcSatir = (props) => {
-    const deleteSubmitHandler =(e)=>{
-        e.preventDefault()
-        const apiUrl = "https://borc.cagataykaban.com/"
-        trackPromise(
-          axios({
-            method: "delete",
-            url: apiUrl + "api/Borclar/" + props.id,
-            headers: {
-              Authorization: "Bearer " + props.token,
-            }
-          })
-            .then((response) => {
-              props.setBorclar(props.borclar.filter((borc)=>borc.Id!==response.data.Id))
-            })
-            .catch((error) => {
-            })
+    const deleteSubmitHandler =()=>{
+      var apiUrl = "https://borc.cagataykaban.com/";
+      trackPromise(
+      axios({
+        method: "delete",
+        url: apiUrl + "api/Borclar/Sil/" + props.borc.Id,
+        headers: {
+          Authorization: "Bearer " + props.token,
+        },
+      })
+        .then((response) => {
+           props.setBorclar(props.borclar.filter((borc)=>borc.Id!==props.borc.Id))
+            console.log('oldu silme ');
+        })
+        .catch((error) => {
+          console.log(error);
+        })
         );
       };
   return (
@@ -34,16 +58,8 @@ const BorcSatir = (props) => {
       </td>
       <td>{props.borc.SonOdemeTarihi.substr(0, 10)}</td>
       <td className="d-flex align-items-baseline">
-        <div className="custom-control custom-switch">
-          <input
-            checked={props.borc.BorcKapandiMi ? "true" : false}
-            type="checkbox"
-            className="custom-control-input"
-            id="customSwitch1"
-          />
-          <label className="custom-control-label" htmlFor="customSwitch1"></label>
-        </div>
-        <button onClick={deleteSubmitHandler} style={{ color: "red" }} className="fas fa-trash"></button>
+        
+        <i onClick={deleteSubmitHandler} style={{ color: "red" }} className="fas fa-trash"></i>
       </td>
     </tr>
   );
