@@ -47,7 +47,7 @@ const HomePage = (props) => {
     <div className="container card p-0 mb-4">
       <div className="card-header d-flex align-items-center nav">
         <div className="mr-3 d-flex">
-          <img src={logoborc} width="50" alt="" />
+          <img src={logoborc} width="50" style={{width: 78}} alt="" />
           <h3 className="mb-0 mt-2 ml-2">Borç Defteri</h3>
         </div>
         <div className="d-flex">
